@@ -18,7 +18,6 @@ O uso de bonding 802.3ad exige que os switches aos quais as interfaces físicas 
 
 3. **Ambiente de Rede Segmentado (VLANs)**\
 Se você estiver utilizando VLANs para segmentação de rede, é necessário que a infraestrutura de rede (como switches e roteadores) esteja configurada para suportar VLAN tagging.
-
 VLANs no ambiente: As VLANs são usadas para segmentar a rede em diferentes sub-redes lógicas, proporcionando mais segurança, organização e controle de tráfego. A configuração de VLANs no Proxmox requer a criação de interfaces VLAN em cima da interface de bonding, utilizando a sintaxe bond0.XXX, onde XXX é o ID da VLAN.
 
 4. **Ambiente Virtualizado (Proxmox)**\
