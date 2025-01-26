@@ -91,7 +91,8 @@ iface bond0 inet manual
 As VLANs são configuradas sobre o bond0, criando interfaces VLAN específicas (bond0.200, bond0.300, bond0.400). 
 Essas interfaces são configuradas como interfaces "manuais", sem atribuição de IP diretamente.
 
->**VLAN 200 - Rede DMZ**
+>**VLAN 200 - Rede DMZ**\
+
 Exemplo:
 
 ```yaml
@@ -99,7 +100,8 @@ auto bond0.200
 iface bond0.200 inet manual
     vlan-raw-device bond0
 ```
->**VLAN 300 - Rede Servidores**
+>**VLAN 300 - Rede Servidores**\
+
 Exemplo:
 
 ```yaml
@@ -107,7 +109,8 @@ auto bond0.300
 iface bond0.300 inet manual
     vlan-raw-device bond0
 ```
->**VLAN 400 - Rede Administrativa**
+>**VLAN 400 - Rede Administrativa**\
+
 Exemplo:
 
 ```yaml
