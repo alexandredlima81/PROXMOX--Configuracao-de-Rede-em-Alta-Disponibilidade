@@ -41,6 +41,12 @@ A estrutura de rede do Proxmox foi configurada da seguinte forma:
 >**Arquivo interfaces:** Configuração do arquivo /etc/network/interfaces
 >
 
+## Diagrama Interfaces de Rede
+O diagrama a seguir apresenta uma visão geral das interfaces de rede em um ambiente configurado com múltiplas camadas de abstração, incluindo interfaces físicas, bonds, VLANs e bridges. 
+
+![Diagrama01](images/Diagrama01.png)
+
+
 1. **Interfaces Físicas**\
 As interfaces físicas são configuradas manualmente, sem a atribuição de IPs, e com MTU ajustado para 1500.
 
@@ -82,7 +88,7 @@ iface bond0 inet manual
     mtu 1500
 ``` 
 
-3. **Interfaces de VLANs**
+3. **Interfaces de VLANs**\
 As VLANs são configuradas sobre o bond0, criando interfaces VLAN específicas (bond0.200, bond0.300, bond0.400). 
 Essas interfaces são configuradas como interfaces "manuais", sem atribuição de IP diretamente.
 
