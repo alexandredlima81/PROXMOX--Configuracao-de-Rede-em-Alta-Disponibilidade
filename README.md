@@ -17,8 +17,7 @@ Requisito: Ambas as interfaces precisam ser configuradas manualmente para não o
 O uso de bonding 802.3ad exige que os switches aos quais as interfaces físicas estão conectadas ofereçam suporte ao protocolo LACP, que permite a agregação das interfaces. O Proxmox, por meio da configuração do arquivo /etc/network/interfaces, será capaz de combinar as interfaces físicas em um único canal de comunicação.
 
 3. **Ambiente de Rede Segmentado (VLANs)**\
-Se você estiver utilizando VLANs para segmentação de rede, é necessário que a infraestrutura de rede (como switches e roteadores) esteja configurada para suportar VLAN tagging.
-VLANs no ambiente: As VLANs são usadas para segmentar a rede em diferentes sub-redes lógicas, proporcionando mais segurança, organização e controle de tráfego. A configuração de VLANs no Proxmox requer a criação de interfaces VLAN em cima da interface de bonding, utilizando a sintaxe bond0.XXX, onde XXX é o ID da VLAN.
+Se você estiver utilizando VLANs para segmentação de rede, é necessário que a infraestrutura de rede (como switches e roteadores) esteja configurada para suportar VLAN tagging. VLANs no ambiente: As VLANs são usadas para segmentar a rede em diferentes sub-redes lógicas, proporcionando mais segurança, organização e controle de tráfego. A configuração de VLANs no Proxmox requer a criação de interfaces VLAN em cima da interface de bonding, utilizando a sintaxe bond0.XXX, onde XXX é o ID da VLAN.
 
 4. **Ambiente Virtualizado (Proxmox)**\
 O Proxmox VE deve estar configurado em um ambiente com máquinas virtuais (VMs) ou containers, pois as bridges configuradas (vmbr0, vmbr200, etc.) são utilizadas para conectar essas VMs ou containers às diferentes redes, conforme as VLANs configuradas.
@@ -31,17 +30,18 @@ Exemplo: O IP 192.168.18.200/24 é atribuído à bridge vmbr0, e o gateway da re
 6. **Conectividade de Rede**\
 Verifique se a conectividade de rede entre o Proxmox e os switches de agregação de links (para o bonding) está funcionando corretamente. Isso pode ser feito através de comandos de rede como ping e traceroute, além de verificar as configurações nos switches para garantir que a agregação de links (LACP) esteja configurada corretamente.
 
-</p>
 
-Estrutura da Rede
+## Estrutura da Rede
 A estrutura de rede do Proxmox foi configurada da seguinte forma:
+>
+>**Interfaces Físicas:** Configuração de interfaces de rede físicas.
+>**Bonding:** Criação de um bond para agregação de interfaces de rede.
+>**Bridges:** Configuração de bridges para diferentes redes, cada uma associada a uma VLAN específica.
+>**VLANs:** Configuração de VLANs para segmentação de rede.
+>**Arquivo interfaces:** Configuração do arquivo /etc/network/interfaces
+>
 
-Interfaces Físicas: Configuração de interfaces de rede físicas.
-Bonding: Criação de um bond para agregação de interfaces de rede.
-Bridges: Configuração de bridges para diferentes redes, cada uma associada a uma VLAN específica.
-VLANs: Configuração de VLANs para segmentação de rede.
-Configuração do arquivo /etc/network/interfaces
-1. Interfaces Físicas
+1. **Interfaces Físicas**
 As interfaces físicas são configuradas manualmente, sem a atribuição de IPs, e com MTU ajustado para 1500.
 
 Exemplo:
@@ -166,5 +166,4 @@ Bonding: O uso de bonding aumenta a redundância e a largura de banda agregada d
 VLANs: As VLANs permitem a segmentação de rede, proporcionando segurança e organização das redes virtuais.
 Bridges: As bridges permitem a interconexão de máquinas virtuais e containers com diferentes segmentos de rede.
 Essa configuração proporciona uma rede eficiente e segmentada, adequada para ambientes virtualizados no Proxmox.
-
-Essa versão da documentação agora inclui uma seção de pré-requisitos detalhada, que descreve as necessidades para implementar essa configuração de rede no Proxmox, além de todas as informações relevantes para garantir que a infraestrutura seja configurada corretamente e em alta disponibilidade.
+</p>
