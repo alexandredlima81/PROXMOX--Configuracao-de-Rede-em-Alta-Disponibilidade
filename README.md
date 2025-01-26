@@ -1,6 +1,6 @@
 <center>
 
-# Configuração de Rede em Alta Disponibilidade para ambientes de virtualização Proxmox.
+# Configuração de Rede em Alta Disponibilidade para ambientes de virtualização Proxmox
 <p align="justify">
 Este repositório contém a configuração de rede em alta disponibilidade para um servidor Proxmox, com foco na utilização de bonding (agregação de interfaces de rede) e VLANs (Virtual LANs), com o objetivo de garantir uma rede resiliente, segmentada e com balanceamento de carga. A seguir estão os detalhes de configuração e os requisitos necessários para implementar essa solução em ambientes de produção.
 
@@ -52,20 +52,20 @@ As interfaces físicas são configuradas manualmente, sem a atribuição de IPs,
 Exemplo:
 
 ```yaml
-#Configuração da interface loopback
+#Configuração da interface loopback.
 auto lo
 iface lo inet loopback
 
-#Configuração da interface física enp2s0 (não atribui IP, apenas configura manualmente)
+#Configuração da interface física enp2s0 (não atribui IP, apenas configura manualmente).
 iface enp2s0 inet manual
     mtu 1500
 
-#Configuração da interface física enp6s0f0 (não atribui IP, apenas configura manualmente)
+#Configuração da interface física enp6s0f0 (não atribui IP, apenas configura manualmente).
 auto enp6s0f0
 iface enp6s0f0 inet manual
     mtu 1500
 
-#Configuração da interface física enp6s0f1 (não atribui IP, apenas configura manualmente)
+#Configuração da interface física enp6s0f1 (não atribui IP, apenas configura manualmente).
 auto enp6s0f1
 iface enp6s0f1 inet manual
     mtu 1500
@@ -77,7 +77,7 @@ O bond0 é criado como uma interface agregada, utilizando as interfaces enp6s0f0
 Exemplo:
 
 ```yaml
-# Configuração do bonding (agregação de interfaces físicas enp6s0f0 e enp6s0f1)
+# Configuração do bonding (agregação de interfaces físicas enp6s0f0 e enp6s0f1).
 auto bond0
 iface bond0 inet manual
     bond-slaves enp6s0f0 enp6s0f1
@@ -93,9 +93,11 @@ Essas interfaces são configuradas como interfaces "manuais", sem atribuição d
 
 >**VLAN 200 - Rede DMZ**\
 
+
 Exemplo:
 
 ```yaml
+# Configuração da VLAN 200 sobre o bonding.
 auto bond0.200
 iface bond0.200 inet manual
     vlan-raw-device bond0
@@ -105,6 +107,7 @@ iface bond0.200 inet manual
 Exemplo:
 
 ```yaml
+# Configuração da VLAN 300 sobre o bonding.
 auto bond0.300
 iface bond0.300 inet manual
     vlan-raw-device bond0
@@ -114,6 +117,7 @@ iface bond0.300 inet manual
 Exemplo:
 
 ```yaml
+# Configuração da VLAN 400 sobre o bonding.
 auto bond0.400
 iface bond0.400 inet manual
     vlan-raw-device bond0
@@ -146,7 +150,7 @@ iface vmbr0 inet static
 Exemplo:
 
 ```yaml
-# Configuração do bridge vmbr200, para rede DMZ (VLAN 200)
+# Configuração do bridge vmbr200, para rede DMZ (VLAN 200).
 auto vmbr200
 iface vmbr200 inet manual
     bridge-ports bond0.200
@@ -161,7 +165,7 @@ iface vmbr200 inet manual
 Exemplo:
 
 ```yaml
-# Configuração do bridge vmbr300, para rede de servidores (VLAN 300)
+# Configuração do bridge vmbr300, para rede de servidores (VLAN 300).
 auto vmbr300
 iface vmbr300 inet manual
     bridge-ports bond0.300
@@ -176,7 +180,7 @@ iface vmbr300 inet manual
 Exemplo:
 
 ```yaml
-# Configuração do bridge vmbr400, para rede administrativa (VLAN 400)
+# Configuração do bridge vmbr400, para rede administrativa (VLAN 400).
 auto vmbr400
 iface vmbr400 inet manual
     bridge-ports bond0.400
