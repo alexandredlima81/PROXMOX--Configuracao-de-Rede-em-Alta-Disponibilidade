@@ -30,6 +30,11 @@ Exemplo: O IP 192.168.18.200/24 é atribuído à bridge vmbr0, e o gateway da re
 6. **Conectividade de Rede**\
 Verifique se a conectividade de rede entre o Proxmox e os switches de agregação de links (para o bonding) está funcionando corretamente. Isso pode ser feito através de comandos de rede como ping e traceroute, além de verificar as configurações nos switches para garantir que a agregação de links (LACP) esteja configurada corretamente.
 
+## Diagrama Interfaces de Rede
+O diagrama a seguir apresenta uma visão geral das interfaces de rede em um ambiente configurado com múltiplas camadas de abstração, incluindo interfaces físicas, bonds, VLANs e bridges. 
+
+![Diagrama01](images/Diagrama01.png)
+
 
 ## Estrutura da Rede
 A estrutura de rede do Proxmox foi configurada da seguinte forma:
@@ -40,12 +45,6 @@ A estrutura de rede do Proxmox foi configurada da seguinte forma:
 >**VLANs:** Configuração de VLANs para segmentação de rede.\
 >**Arquivo interfaces:** Configuração do arquivo /etc/network/interfaces
 >
-
-## Diagrama Interfaces de Rede
-O diagrama a seguir apresenta uma visão geral das interfaces de rede em um ambiente configurado com múltiplas camadas de abstração, incluindo interfaces físicas, bonds, VLANs e bridges. 
-
-![Diagrama01](images/Diagrama01.png)
-
 
 1. **Interfaces Físicas**\
 As interfaces físicas são configuradas manualmente, sem a atribuição de IPs, e com MTU ajustado para 1500.
