@@ -34,10 +34,10 @@ Verifique se a conectividade de rede entre o Proxmox e os switches de agregaçã
 ## Estrutura da Rede
 A estrutura de rede do Proxmox foi configurada da seguinte forma:
 >
->**Interfaces Físicas:** Configuração de interfaces de rede físicas.
->**Bonding:** Criação de um bond para agregação de interfaces de rede.
->**Bridges:** Configuração de bridges para diferentes redes, cada uma associada a uma VLAN específica.
->**VLANs:** Configuração de VLANs para segmentação de rede.
+>**Interfaces Físicas:** Configuração de interfaces de rede físicas.\
+>**Bonding:** Criação de um bond para agregação de interfaces de rede.\
+>**Bridges:** Configuração de bridges para diferentes redes, cada uma associada a uma VLAN específica.\
+>**VLANs:** Configuração de VLANs para segmentação de rede.\
 >**Arquivo interfaces:** Configuração do arquivo /etc/network/interfaces
 >
 
