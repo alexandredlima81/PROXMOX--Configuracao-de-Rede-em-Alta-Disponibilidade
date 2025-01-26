@@ -177,10 +177,16 @@ iface vmbr400 inet manual
     mtu 1500
 ```
 
+# Considerações Finais
 
-Considerações Finais
-Bonding: O uso de bonding aumenta a redundância e a largura de banda agregada das interfaces de rede físicas.
-VLANs: As VLANs permitem a segmentação de rede, proporcionando segurança e organização das redes virtuais.
-Bridges: As bridges permitem a interconexão de máquinas virtuais e containers com diferentes segmentos de rede.
+**Bonding:** O uso de bonding aumenta a redundância e a largura de banda agregada das interfaces de rede físicas.\
+**VLANs:** As VLANs permitem a segmentação de rede, proporcionando segurança e organização das redes virtuais.\
+**Bridges:** As bridges permitem a interconexão de máquinas virtuais e containers com diferentes segmentos de rede.\
 Essa configuração proporciona uma rede eficiente e segmentada, adequada para ambientes virtualizados no Proxmox.
+
+# Importante
+
+A quantidade de VLANs e os nomes aqui utilizados são apenas para referência.
+Podendo ser readequada de acorodo com o ambiente em questão a ser aplicado.
+
 </p>
