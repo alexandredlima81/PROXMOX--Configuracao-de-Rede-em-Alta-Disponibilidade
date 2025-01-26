@@ -84,8 +84,8 @@ iface bond0 inet manual
 3. **Bridges de Rede**\
 As bridges são configuradas para diferentes redes, com cada bridge associada a uma VLAN específica. As bridges são configuradas para atuar como interfaces de rede para máquinas virtuais, containers, e outros dispositivos.
 
-Bridge vmbr0 (Rede Principal)
-A bridge vmbr0 é configurada para a rede principal (192.168.18.200/24), com o gateway definido como 192.168.18.1. Ela utiliza o bond0 como dispositivo de link.
+>Bridge vmbr0 (Rede Principal)\
+>A bridge vmbr0 é configurada para a rede principal (192.168.18.200/24), com o gateway definido como 192.168.18.1. Ela utiliza o bond0 como dispositivo de link.
 
 Exemplo:
 
@@ -99,8 +99,9 @@ iface vmbr0 inet static
     bridge-stp off
     bridge-fd 0
     mtu 1500
-Bridge vmbr200 (Rede DMZ - VLAN 200)
-A bridge vmbr200 é configurada para a rede DMZ, associada à VLAN 200. A interface de rede é o bond0.200.
+```
+>**Bridge vmbr200 (Rede DMZ - VLAN 200)**
+>A bridge vmbr200 é configurada para a rede DMZ, associada à VLAN 200. A interface de rede é o bond0.200.
 
 bash
 Copy
