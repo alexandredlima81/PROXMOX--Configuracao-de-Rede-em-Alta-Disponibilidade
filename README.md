@@ -66,7 +66,7 @@ iface enp6s0f1 inet manual
     mtu 1500
 ```    
     
-2. **Bonding (Agregação de Interfaces Físicas)**\
+2. **Interface Bonding (Agregação de Interfaces Físicas)**\
 O bond0 é criado como uma interface agregada, utilizando as interfaces enp6s0f0 e enp6s0f1. O modo de bonding utilizado é o 802.3ad, com monitoramento de link (bond-miimon) e política de transmissão (bond-xmit-hash-policy) baseada em camadas 2 e 3.
 
 Exemplo:
@@ -81,11 +81,12 @@ iface bond0 inet manual
     bond-xmit-hash-policy layer2+3
     mtu 1500
 ``` 
-3. **Bridges de Rede**\
+3. **Interfaces Bridges de Rede**\
 As bridges são configuradas para diferentes redes, com cada bridge associada a uma VLAN específica. As bridges são configuradas para atuar como interfaces de rede para máquinas virtuais, containers, e outros dispositivos.
 
->Bridge vmbr0 (Rede Principal)\
->A bridge vmbr0 é configurada para a rede principal (192.168.18.200/24), com o gateway definido como 192.168.18.1. Ela utiliza o bond0 como dispositivo de link.
+>**Bridge vmbr0 (Rede Principal)**\
+>A bridge vmbr0 é configurada para a rede principal (192.168.18.200/24), com o gateway definido como 192.168.18.1. 
+>Ela utiliza o bond0 como dispositivo de link.
 
 Exemplo:
 
@@ -100,12 +101,13 @@ iface vmbr0 inet static
     bridge-fd 0
     mtu 1500
 ```
->**Bridge vmbr200 (Rede DMZ - VLAN 200)**
->A bridge vmbr200 é configurada para a rede DMZ, associada à VLAN 200. A interface de rede é o bond0.200.
+>**Bridge vmbr200 (Rede DMZ - VLAN 200)**\
+>A bridge vmbr200 é configurada para a rede DMZ, associada à VLAN 200. 
+>A interface de rede é o bond0.200.
 
-bash
-Copy
-Edit
+Exemplo:
+
+```yaml
 # Configuração do bridge vmbr200, para rede DMZ (VLAN 200)
 auto vmbr200
 iface vmbr200 inet manual
@@ -113,12 +115,14 @@ iface vmbr200 inet manual
     bridge-stp off
     bridge-fd 0
     mtu 1500
-Bridge vmbr300 (Rede de Servidores - VLAN 300)
-A bridge vmbr300 é configurada para a rede de servidores, associada à VLAN 300. A interface de rede é o bond0.300.
+```
+>**Bridge vmbr300 (Rede de Servidores - VLAN 300)**\
+>A bridge vmbr300 é configurada para a rede de servidores, associada à VLAN 300. 
+>A interface de rede é o bond0.300.
 
-bash
-Copy
-Edit
+Exemplo:
+
+```yaml
 # Configuração do bridge vmbr300, para rede de servidores (VLAN 300)
 auto vmbr300
 iface vmbr300 inet manual
@@ -126,12 +130,14 @@ iface vmbr300 inet manual
     bridge-stp off
     bridge-fd 0
     mtu 1500
-Bridge vmbr400 (Rede Administrativa - VLAN 400)
-A bridge vmbr400 é configurada para a rede administrativa, associada à VLAN 400. A interface de rede é o bond0.400.
+```
+>**Bridge vmbr400 (Rede Administrativa - VLAN 400)**\
+>A bridge vmbr400 é configurada para a rede administrativa, associada à VLAN 400. 
+>A interface de rede é o bond0.400.
 
-bash
-Copy
-Edit
+Exemplo:
+
+```yaml
 # Configuração do bridge vmbr400, para rede administrativa (VLAN 400)
 auto vmbr400
 iface vmbr400 inet manual
@@ -141,7 +147,7 @@ iface vmbr400 inet manual
     mtu 1500
 ```
 
-4. Configuração de VLANs
+4. **Interfaces de VLANs**
 As VLANs são configuradas sobre o bond0, criando interfaces VLAN específicas (bond0.200, bond0.300, bond0.400). Essas interfaces são configuradas como interfaces "manuais", sem atribuição de IP diretamente.
 
 VLAN 200
