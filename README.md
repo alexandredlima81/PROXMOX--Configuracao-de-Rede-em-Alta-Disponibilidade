@@ -184,9 +184,14 @@ iface vmbr400 inet manual
 **Bridges:** As bridges permitem a interconexão de máquinas virtuais e containers com diferentes segmentos de rede.\
 Essa configuração proporciona uma rede eficiente e segmentada, adequada para ambientes virtualizados no Proxmox.
 
-# Importante
+# Importante!
 
 A quantidade de VLANs e os nomes aqui utilizados são apenas para referência.
-Podendo ser readequada de acorodo com o ambiente em questão a ser aplicado.
+Podendo ser readequada de acordo com o ambiente em questão a ser aplicado.
 
+# Links úteis
+
+https://www.proxmox.com/en/
+https://pve.proxmox.com/wiki/Network_Configuration
+https://wiki.debian.org/pt_BR/NetworkConfiguration
 </p>
