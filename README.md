@@ -41,7 +41,7 @@ A estrutura de rede do Proxmox foi configurada da seguinte forma:
 >**Arquivo interfaces:** Configuração do arquivo /etc/network/interfaces
 >
 
-1. **Interfaces Físicas**
+1. **Interfaces Físicas**\
 As interfaces físicas são configuradas manualmente, sem a atribuição de IPs, e com MTU ajustado para 1500.
 
 Exemplo:
@@ -66,7 +66,7 @@ iface enp6s0f1 inet manual
     mtu 1500
 ```    
     
-2. **Bonding (Agregação de Interfaces Físicas)**
+2. **Bonding (Agregação de Interfaces Físicas)**\
 O bond0 é criado como uma interface agregada, utilizando as interfaces enp6s0f0 e enp6s0f1. O modo de bonding utilizado é o 802.3ad, com monitoramento de link (bond-miimon) e política de transmissão (bond-xmit-hash-policy) baseada em camadas 2 e 3.
 
 Exemplo:
@@ -81,16 +81,16 @@ iface bond0 inet manual
     bond-xmit-hash-policy layer2+3
     mtu 1500
 ``` 
-3. **Bridges de Rede**
+3. **Bridges de Rede**\
 As bridges são configuradas para diferentes redes, com cada bridge associada a uma VLAN específica. As bridges são configuradas para atuar como interfaces de rede para máquinas virtuais, containers, e outros dispositivos.
 
 Bridge vmbr0 (Rede Principal)
 A bridge vmbr0 é configurada para a rede principal (192.168.18.200/24), com o gateway definido como 192.168.18.1. Ela utiliza o bond0 como dispositivo de link.
 
-bash
-Copy
-Edit
-# Configuração do bridge vmbr0, para rede principal
+Exemplo:
+
+```yaml
+# Configuração do bridge vmbr0, para rede principal\
 auto vmbr0
 iface vmbr0 inet static
     address 192.168.18.200/24
@@ -138,6 +138,8 @@ iface vmbr400 inet manual
     bridge-stp off
     bridge-fd 0
     mtu 1500
+```
+
 4. Configuração de VLANs
 As VLANs são configuradas sobre o bond0, criando interfaces VLAN específicas (bond0.200, bond0.300, bond0.400). Essas interfaces são configuradas como interfaces "manuais", sem atribuição de IP diretamente.
 
