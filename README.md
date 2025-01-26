@@ -1,3 +1,4 @@
+<center>
 # Configuração de Rede em Alta Disponibilidade para ambientes de virtualização Proxmox.
 <p align="justify">
 Este repositório contém a configuração de rede em alta disponibilidade para um servidor Proxmox, com foco na utilização de bonding (agregação de interfaces de rede) e VLANs (Virtual LANs), com o objetivo de garantir uma rede resiliente, segmentada e com balanceamento de carga. A seguir estão os detalhes de configuração e os requisitos necessários para implementar essa solução em ambientes de produção.
@@ -26,7 +27,7 @@ Para a bridge da rede principal (vmbr0), um IP estático e um gateway devem ser 
 Exemplo: O IP 192.168.18.200/24 é atribuído à bridge vmbr0, e o gateway da rede é definido como 192.168.18.1.
 6. Conectividade de Rede
 Verifique se a conectividade de rede entre o Proxmox e os switches de agregação de links (para o bonding) está funcionando corretamente. Isso pode ser feito através de comandos de rede como ping e traceroute, além de verificar as configurações nos switches para garantir que a agregação de links (LACP) esteja configurada corretamente.
-
+</p>
 Estrutura da Rede
 A estrutura de rede do Proxmox foi configurada da seguinte forma:
 
