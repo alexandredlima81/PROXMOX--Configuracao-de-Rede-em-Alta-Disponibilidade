@@ -81,17 +81,47 @@ iface bond0 inet manual
     bond-xmit-hash-policy layer2+3
     mtu 1500
 ``` 
-3. **Interfaces Bridges de Rede**\
+
+3. **Interfaces de VLANs**
+As VLANs são configuradas sobre o bond0, criando interfaces VLAN específicas (bond0.200, bond0.300, bond0.400). 
+Essas interfaces são configuradas como interfaces "manuais", sem atribuição de IP diretamente.
+
+>**VLAN 200 - Rede DMZ**
+Exemplo:
+
+```yaml
+auto bond0.200
+iface bond0.200 inet manual
+    vlan-raw-device bond0
+```
+>**VLAN 300 - Rede Servidores**
+Exemplo:
+
+```yaml
+auto bond0.300
+iface bond0.300 inet manual
+    vlan-raw-device bond0
+```
+>**VLAN 400 - Rede Administrativa**
+Exemplo:
+
+```yaml
+auto bond0.400
+iface bond0.400 inet manual
+    vlan-raw-device bond0
+```
+
+4. **Interfaces Bridges de Rede**\
 As bridges são configuradas para diferentes redes, com cada bridge associada a uma VLAN específica. As bridges são configuradas para atuar como interfaces de rede para máquinas virtuais, containers, e outros dispositivos.
 
->**Bridge vmbr0 (Rede Principal)**\
+>**Bridge vmbr0 (Rede Principal de Gerenciamento)**\
 >A bridge vmbr0 é configurada para a rede principal (192.168.18.200/24), com o gateway definido como 192.168.18.1. 
 >Ela utiliza o bond0 como dispositivo de link.
 
 Exemplo:
 
 ```yaml
-# Configuração do bridge vmbr0, para rede principal\
+# Configuração do bridge vmbr0, para rede principal de Gerenciamento.
 auto vmbr0
 iface vmbr0 inet static
     address 192.168.18.200/24
@@ -147,30 +177,7 @@ iface vmbr400 inet manual
     mtu 1500
 ```
 
-4. **Interfaces de VLANs**
-As VLANs são configuradas sobre o bond0, criando interfaces VLAN específicas (bond0.200, bond0.300, bond0.400). Essas interfaces são configuradas como interfaces "manuais", sem atribuição de IP diretamente.
 
-VLAN 200
-bash
-Copy
-Edit
-auto bond0.200
-iface bond0.200 inet manual
-    vlan-raw-device bond0
-VLAN 300
-bash
-Copy
-Edit
-auto bond0.300
-iface bond0.300 inet manual
-    vlan-raw-device bond0
-VLAN 400
-bash
-Copy
-Edit
-auto bond0.400
-iface bond0.400 inet manual
-    vlan-raw-device bond0
 Considerações Finais
 Bonding: O uso de bonding aumenta a redundância e a largura de banda agregada das interfaces de rede físicas.
 VLANs: As VLANs permitem a segmentação de rede, proporcionando segurança e organização das redes virtuais.
