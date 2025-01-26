@@ -45,33 +45,33 @@ A estrutura de rede do Proxmox foi configurada da seguinte forma:
 As interfaces físicas são configuradas manualmente, sem a atribuição de IPs, e com MTU ajustado para 1500.
 
 Exemplo:
-bash
-Copy
-Edit
-# Configuração da interface loopback
+
+```yaml
+#Configuração da interface loopback
 auto lo
 iface lo inet loopback
 
-# Configuração da interface física enp2s0 (não atribui IP, apenas configura manualmente)
+#Configuração da interface física enp2s0 (não atribui IP, apenas configura manualmente)
 iface enp2s0 inet manual
     mtu 1500
 
-# Configuração da interface física enp6s0f0 (não atribui IP, apenas configura manualmente)
+#Configuração da interface física enp6s0f0 (não atribui IP, apenas configura manualmente)
 auto enp6s0f0
 iface enp6s0f0 inet manual
     mtu 1500
 
-# Configuração da interface física enp6s0f1 (não atribui IP, apenas configura manualmente)
+#Configuração da interface física enp6s0f1 (não atribui IP, apenas configura manualmente)
 auto enp6s0f1
 iface enp6s0f1 inet manual
     mtu 1500
-2. Bonding (Agregação de Interfaces Físicas)
+```    
+    
+2. **Bonding (Agregação de Interfaces Físicas)**
 O bond0 é criado como uma interface agregada, utilizando as interfaces enp6s0f0 e enp6s0f1. O modo de bonding utilizado é o 802.3ad, com monitoramento de link (bond-miimon) e política de transmissão (bond-xmit-hash-policy) baseada em camadas 2 e 3.
 
 Exemplo:
-bash
-Copy
-Edit
+
+```yaml
 # Configuração do bonding (agregação de interfaces físicas enp6s0f0 e enp6s0f1)
 auto bond0
 iface bond0 inet manual
@@ -80,7 +80,8 @@ iface bond0 inet manual
     bond-mode 802.3ad
     bond-xmit-hash-policy layer2+3
     mtu 1500
-3. Bridges de Rede
+``` 
+3. **Bridges de Rede**
 As bridges são configuradas para diferentes redes, com cada bridge associada a uma VLAN específica. As bridges são configuradas para atuar como interfaces de rede para máquinas virtuais, containers, e outros dispositivos.
 
 Bridge vmbr0 (Rede Principal)
