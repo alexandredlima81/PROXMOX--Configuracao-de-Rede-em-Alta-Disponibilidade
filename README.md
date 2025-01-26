@@ -7,29 +7,29 @@ Este repositório contém a configuração de rede em alta disponibilidade para 
 ## Pré-requisitos
 Antes de aplicar a configuração descrita neste documento, é importante garantir que os seguintes requisitos sejam atendidos:
 
-1. **Interfaces Físicas**
+1. **Interfaces Físicas**\
 Para a implementação de bonding, você deve possuir ao menos duas interfaces de rede físicas disponíveis. No caso de uma configuração de bonding 802.3ad (LACP), é necessário que ambas as interfaces sejam conectadas a switches que suportem agregação de links (LACP).
 
 Exemplo: No arquivo de configuração, estamos utilizando as interfaces enp6s0f0 e enp6s0f1 para o bonding.
 Requisito: Ambas as interfaces precisam ser configuradas manualmente para não obterem IP diretamente e estarem preparadas para agregação.
 
-2. **Switches com Suporte a LACP (Link Aggregation Control Protocol)**
+2. **Switches com Suporte a LACP (Link Aggregation Control Protocol)**\
 O uso de bonding 802.3ad exige que os switches aos quais as interfaces físicas estão conectadas ofereçam suporte ao protocolo LACP, que permite a agregação das interfaces. O Proxmox, por meio da configuração do arquivo /etc/network/interfaces, será capaz de combinar as interfaces físicas em um único canal de comunicação.
 
-3. **Ambiente de Rede Segmentado (VLANs)**
+3. **Ambiente de Rede Segmentado (VLANs)**\
 Se você estiver utilizando VLANs para segmentação de rede, é necessário que a infraestrutura de rede (como switches e roteadores) esteja configurada para suportar VLAN tagging.
 
 VLANs no ambiente: As VLANs são usadas para segmentar a rede em diferentes sub-redes lógicas, proporcionando mais segurança, organização e controle de tráfego. A configuração de VLANs no Proxmox requer a criação de interfaces VLAN em cima da interface de bonding, utilizando a sintaxe bond0.XXX, onde XXX é o ID da VLAN.
 
-4. **Ambiente Virtualizado (Proxmox)**
+4. **Ambiente Virtualizado (Proxmox)**\
 O Proxmox VE deve estar configurado em um ambiente com máquinas virtuais (VMs) ou containers, pois as bridges configuradas (vmbr0, vmbr200, etc.) são utilizadas para conectar essas VMs ou containers às diferentes redes, conforme as VLANs configuradas.
 
-5. **Configuração de IP e Gateway**
+5. **Configuração de IP e Gateway**\
 Para a bridge da rede principal (vmbr0), um IP estático e um gateway devem ser configurados para garantir que o servidor Proxmox tenha acesso à rede externa.
 
 Exemplo: O IP 192.168.18.200/24 é atribuído à bridge vmbr0, e o gateway da rede é definido como 192.168.18.1.
 
-6. **Conectividade de Rede**
+6. **Conectividade de Rede**\
 Verifique se a conectividade de rede entre o Proxmox e os switches de agregação de links (para o bonding) está funcionando corretamente. Isso pode ser feito através de comandos de rede como ping e traceroute, além de verificar as configurações nos switches para garantir que a agregação de links (LACP) esteja configurada corretamente.
 
 </p>
