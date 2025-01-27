@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 # <img src="images/icons8-proxmox-240.png"  width="100" style="vertical-align: middle;">
 
-=======
-
-# <img src="images/icons8-proxmox-240.png"  width="100" style="vertical-align: middle;">
-
->>>>>>> 29eb23c9844620bd659cd899618a32a159d2a7b1
-# Configuração de Rede em Alta Disponibilidade para ambientes de virtualização PROXMOX
+# PROXMOX - Configuração de Rede em Alta Disponibilidade
 
 <p align="justify">
 Este repositório contém a configuração de rede em alta disponibilidade para um servidor Proxmox, com foco na utilização de bonding (agregação de interfaces de rede) e VLANs (Virtual LANs), com o objetivo de garantir uma rede resiliente, segmentada e com balanceamento de carga. A seguir estão os detalhes de configuração e os requisitos necessários para implementar essa solução em ambientes de produção.
