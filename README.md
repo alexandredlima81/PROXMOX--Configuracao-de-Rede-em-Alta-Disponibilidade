@@ -2,8 +2,7 @@
 <div style="display: flex; align-items: flex-start;">
   <img src="images/icons8-proxmox-240.png" alt="Descrição da imagem" style="width: 200px; margin-right: 20px;">
   <div>
-    ### Meu Título
-    Aqui está o texto explicando o título ou algo relacionado à imagem. Você pode expandir este texto para incluir mais informações.
+     # Configuração de Rede em Alta Disponibilidade para ambientes de virtualização Proxmox
   </div>
 </div>
  # Configuração de Rede em Alta Disponibilidade para ambientes de virtualização Proxmox
