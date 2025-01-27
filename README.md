@@ -1,5 +1,3 @@
-<center>
-
 # <img src="images/icons8-proxmox-240.png"  width="100" style="vertical-align: 1px;">  Configuração de Rede em Alta Disponibilidade para ambientes de virtualização PROXMOX
 
 <p align="justify">
