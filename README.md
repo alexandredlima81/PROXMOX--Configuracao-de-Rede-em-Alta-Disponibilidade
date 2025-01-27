@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# <img src="images/icons8-proxmox-240.png"  width="100" style="vertical-align: middle;">
-
-=======
-
 # <img src="images/icons8-proxmox-240.png"  width="100" style="vertical-align: middle;">
 
 >>>>>>> 29eb23c9844620bd659cd899618a32a159d2a7b1
